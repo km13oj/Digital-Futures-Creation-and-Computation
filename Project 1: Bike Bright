@@ -1,0 +1,55 @@
+int sensor=A0;
+int sensor2=A1;
+int ledPin=3;
+int ledPin2=5;
+
+
+int sensor1Value;
+int sensor2Value;
+
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(sensor, INPUT);
+  pinMode(sensor2, INPUT);
+
+}
+
+void loop()
+{
+  sensor1Value=analogRead(sensor);
+  sensor2Value=analogRead(sensor2);
+  Serial.println(sensor2Value);
+  if(sensor2Value >=50 && sensor1Value >=50)
+  {
+    analogWrite(ledPin,255);
+    delay(100);
+    analogWrite(ledPin,55);
+    delay(100);
+    
+    analogWrite(ledPin2,255);
+    delay(100);
+    analogWrite(ledPin2,55);
+    delay(100);
+  }
+  
+  
+  if(sensor1Value >20 && sensor1Value <50)
+  {
+    analogWrite(ledPin,155);
+    delay(200);
+  }
+  
+  if(sensor2Value >20 && sensor2Value <50)
+  {
+    analogWrite(ledPin2,155);
+    delay(200);
+  }
+  
+
+  
+ 
+}
