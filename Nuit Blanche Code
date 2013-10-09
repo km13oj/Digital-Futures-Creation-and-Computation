@@ -1,0 +1,42 @@
+int sensor=0;
+int ledPin=3;
+
+
+int sensor1Value;
+int sensor2Value;
+int sensorBetween;
+
+int timeBetween;
+
+int timePrev;
+
+int stopMotionValue;
+
+
+void setup()
+{
+  Serial.begin(9600);
+  
+}
+
+void loop()
+{
+  sensor1Value=analogRead(sensor);
+  delay(200);
+  sensor2Value=analogRead(sensor);
+  //Serial.println(sensor2Value);
+  sensorBetween=abs(sensor2Value-sensor1Value);
+  
+  Serial.println(sensorBetween);
+  if(sensorBetween >30 )
+  {
+    //analogWrite(ledPin,random(1,255));
+    //Serial.println(random(1,255));
+    Serial.println("-----------------------");
+    analogWrite(3,255);
+  }
+  else
+  {
+    analogWrite(ledPin,0);
+  }
+}
